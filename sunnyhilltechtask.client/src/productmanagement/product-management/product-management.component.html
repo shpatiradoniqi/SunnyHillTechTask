@@ -1,0 +1,78 @@
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <ul class="navbar-list">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+    <li><a routerLink="/profile" routerLinkActive="active">Profile</a></li>
+    <li><a routerLink="/settings" routerLinkActive="active">Settings</a></li>
+    <li><a (click)="logout()">Logout</a></li>
+  </ul>
+</nav>
+
+<!-- Products Table -->
+<div class="products-table">
+  <div class="table-header">
+    <h2>Product Management</h2>
+    <button class="add-product-btn" (click)="openAddProductDialog(addProductDialog)">Add Product</button>
+  </div>
+
+  <!-- Angular Table -->
+  <p *ngIf="products.length === 0">No products available.</p>
+
+  <table class="product-table" *ngIf="products.length > 0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.status }}</td>
+        <td>
+          <!--<button class="btn btn-primary btn-sm" (click)="editProduct(product.id)">Edit</button>-->
+          <button class="btn btn-primary btn-sm" (click)="editProduct(product.id, addProductDialog)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination, Filtering, and Sorting -->
+  <div class="pagination">
+    <button (click)="goToPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+    Page {{ currentPage }} of {{ totalPages }}
+    <button (click)="goToNextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
+
+<ng-template #addProductDialog let-modal>
+  <div class="dialog-content">
+    <h3>{{ newProduct.id ? 'Edit Product' : 'Add Product' }}</h3>
+    <form (ngSubmit)="newProduct.id ? updateProduct(modal) : addProduct(modal)">
+      <input [(ngModel)]="newProduct.name" name="name" placeholder="Product Name" required />
+      <input [(ngModel)]="newProduct.price" name="price" placeholder="Price" required />
+      <input [(ngModel)]="newProduct.quantity" name="quantity" placeholder="Quantity" required />
+
+      <!-- Dropdown for categories -->
+      <select [(ngModel)]="newProduct.categoryId" name="categoryId" required>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+
+      <!-- Dropdown for status (Active/Inactive) -->
+      <select [(ngModel)]="newProduct.status" name="status" required>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+
+      <button type="submit">{{ newProduct.id ? 'Update' : 'Add' }} Product</button>
+    </form>
+  </div>
+</ng-template>
+

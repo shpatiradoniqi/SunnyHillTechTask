@@ -1,0 +1,52 @@
+<div class="login-container">
+
+  <div class="left-panel">
+    <div class="background-animation"></div>
+  </div>
+
+  
+  <div class="right-panel">
+    <mat-card>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div>
+          <label for="name">Full Name</label>
+          <input id="name" formControlName="name" type="text" [ngClass]="{'invalid': registerForm.controls['name'].invalid && registerForm.controls['name'].touched}" />
+          <div *ngIf="registerForm.controls['name'].invalid && registerForm.controls['name'].touched">
+            <p>Full Name is required.</p>
+          </div>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" formControlName="email" type="email" [ngClass]="{'invalid': registerForm.controls['email'].invalid && registerForm.controls['email'].touched}" />
+          <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+            <p>Email is required.</p>
+          </div>
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" type="password" [ngClass]="{'invalid': registerForm.controls['password'].invalid && registerForm.controls['password'].touched}" />
+          <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+            <p>Password is required.</p>
+          </div>
+        </div>
+
+        <div>
+          <label for="confirmPassword">Confirm Password</label>
+          <input id="confirmPassword" formControlName="confirmPassword" type="password" [ngClass]="{'invalid': registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched}" />
+          <div *ngIf="registerForm.controls['confirmPassword'].invalid && registerForm.controls['confirmPassword'].touched">
+            <p>Passwords must match.</p>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+
+        <!-- Login Link -->
+        <div class="register-link">
+          <p>Already have an account? <a routerLink="/login">Login here</a></p>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>

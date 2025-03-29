@@ -1,0 +1,71 @@
+/* Container for Dashboard */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+}
+
+/* Navbar Spacer */
+.spacer {
+  flex: 1;
+}
+
+/* Welcome Message */
+.welcome-message {
+  text-align: center;
+  margin: 30px 0;
+}
+
+/* Dashboard Metrics (Cards Layout) */
+.dashboard-metrics {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+/* Common Card Styling */
+.stat-card {
+  width: 320px;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+  /* Different Colors for Each Card */
+  .stat-card.blue {
+    background-color: #2196F3; /* Blue */
+  }
+
+  .stat-card.green {
+    background-color: #4CAF50; /* Green */
+  }
+
+  .stat-card.orange {
+    background-color: #FF9800; /* Orange */
+  }
+
+  /* Card Header Styling */
+  .stat-card mat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+    .stat-card mat-card-header mat-icon {
+      font-size: 30px;
+    }
+
+/* Logout Button Styling */
+button[mat-button] {
+  font-size: 14px;
+  font-weight: bold;
+}

@@ -1,0 +1,63 @@
+<div class="dashboard-container">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Top Navbar -->
+  <mat-toolbar color="primary">
+    <span>Welcome to the Dashboard</span>
+    <span class="spacer"></span>
+
+    <!-- Link to Products Page -->
+    <button mat-button [routerLink]="['/products']" color="primary">
+      <mat-icon>shopping_cart</mat-icon> Products
+    </button>
+
+    <button mat-button (click)="logout()" color="warn">
+      <mat-icon>exit_to_app</mat-icon> Logout
+    </button>
+  </mat-toolbar>
+
+  <!-- Welcome Message -->
+  <!-- Welcome Message -->
+  <div class="welcome-message">
+    <h1>{{ welcomeMessage }}, {{ userName }}!</h1>
+    <p>Your role is : {{ userRole }}</p>
+  </div>
+
+
+  <!-- Dashboard Metrics (Cards with Colors) -->
+  <div class="dashboard-metrics">
+    <!-- Total Products -->
+    <mat-card class="stat-card blue">
+      <mat-card-header>
+        <mat-icon>shopping_cart</mat-icon>
+        <mat-card-title>Total Products</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{ totalProducts }}</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Total Users -->
+    <mat-card class="stat-card green">
+      <mat-card-header>
+        <mat-icon>group</mat-icon>
+        <mat-card-title>Total Users</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>{{ totalUsers }}</h2>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Total Sales -->
+    <mat-card class="stat-card orange">
+      <mat-card-header>
+        <mat-icon>attach_money</mat-icon>
+        <mat-card-title>Total Sales</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h2>${{ totalSales }}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

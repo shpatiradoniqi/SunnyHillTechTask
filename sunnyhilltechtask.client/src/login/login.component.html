@@ -1,0 +1,37 @@
+<div class="login-container">
+  <!-- Left Panel with Animated Background -->
+  <div class="left-panel">
+    <div class="background-animation"></div> 
+  </div>
+
+  <!-- Right Panel with Login Form -->
+  <div class="right-panel">
+    <mat-card>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" formControlName="email" type="email" [ngClass]="{'invalid': loginForm.controls['email'].invalid && loginForm.controls['email'].touched}" />
+          <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+            <p>Email is required.</p>
+          </div>
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input id="password" formControlName="password" type="password" [ngClass]="{'invalid': loginForm.controls['password'].invalid && loginForm.controls['password'].touched}" />
+          <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+            <p>Password is required.</p>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+        <!-- Register Button -->
+        <div class="register-link">
+          <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
+

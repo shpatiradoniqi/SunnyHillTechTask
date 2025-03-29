@@ -1,0 +1,104 @@
+/* Container that holds both panels */
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 1;
+  background-color: #3f51b5;
+  position: relative;
+  overflow: hidden;
+}
+
+.background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(63, 81, 181, 0.8), rgba(255, 64, 129, 0.8));
+  background-size: 400% 400%;
+  animation: background-animation 10s ease infinite;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Right Panel (Login Form) */
+.right-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* Style for the mat-card */
+mat-card {
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+/* Form styling */
+input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+  input:focus {
+    border-color: #3f51b5;
+    outline: none;
+  }
+
+  input.invalid {
+    border-color: #f44336; /* Red border for invalid inputs */
+  }
+
+/* Validation error message styling */
+p {
+  color: #f44336; /* Red for error messages */
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+/* Submit button styles */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3f51b5; /* Blue background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+  button:disabled {
+    background-color: #b0bec5; /* Light gray when disabled */
+  }
+
+  button:hover:not(:disabled) {
+    background-color: #303f9f; /* Darker blue when hovered */
+  }
